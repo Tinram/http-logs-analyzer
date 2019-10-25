@@ -16,7 +16,7 @@ int main(int argc, char **argv)
     config->debug();
     std::ifstream logFile(config->logName.c_str(), std::ifstream::in);
     if (!logFile) {
-        Debug::print("Error: file " + config->logName + " is not exists!");
+        Debug::print("Error: file " + config->logName + " does not exist!");
         exit(1);
     }
     // Collect data

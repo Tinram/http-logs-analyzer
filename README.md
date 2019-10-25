@@ -1,13 +1,13 @@
 Http Logs Analyzer
 ==================
 
-Parses ~ 2 000 000 lines per minute on Core i5. 
+Parses ~ 2,000,000 lines per minute on Core i5.
 
 Usage
 -----
 
 ```shell
-http-logs-analyzer -f ./example/access_log
+http-logs-analyzer -f access.log
 ```
 
 Output
@@ -51,7 +51,7 @@ Advanced usage
 
 ```shell
 # You could specify you own format for RegExps, e.g. IP pattern
-./http-logs-analyzer -f ./example/access_log -i "^([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)"
+./http-logs-analyzer -f access.log -i "^([0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+)"
 # List of all possible params
 ./http-logs-analyzer -h
 ```

@@ -32,7 +32,7 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
     
     // Parse Agent
     if (config->debugMode == 1) {
-        Debug::print("Parser::parse: trying to found agent");
+        Debug::print("Parser::parse: trying to find agent");
     }
     std::string agentRes = matchRegex(&(*logRegExpsCompiled).agent, logLineChars, config);
     if (agentRes.length() < 5) {
@@ -42,28 +42,28 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
         // Parse search engines scan
         const char * agentChars = agentRes.c_str();
         if (config->debugMode == 1) {
-            Debug::print("Parser::parse: trying to found " + std::string(GOOGLE_PATTERN) + " in agent" + agentRes);
+            Debug::print("Parser::parse: trying to find " + std::string(GOOGLE_PATTERN) + " in agent" + agentRes);
         }
         std::string googleRes = matchRegex(&(*logRegExpsCompiled).google, agentChars, config);
         if (googleRes.length() > 3) {
             Result::google++;
         } else {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: trying to found " + std::string(BING_PATTERN) + " in agent" + agentRes);
+                Debug::print("Parser::parse: trying to find " + std::string(BING_PATTERN) + " in agent" + agentRes);
             }
             std::string bingRes = matchRegex(&(*logRegExpsCompiled).bing, agentChars, config);
             if (bingRes.length() > 3) {
                 Result::bing++;
             } else {
                 if (config->debugMode == 1) {
-                    Debug::print("Parser::parse: trying to found " + std::string(BAIDU_PATTERN) + " in agent" + agentRes);
+                    Debug::print("Parser::parse: trying to find " + std::string(BAIDU_PATTERN) + " in agent" + agentRes);
                 }
                 std::string baiduRes = matchRegex(&(*logRegExpsCompiled).baidu, agentChars, config);
                 if (baiduRes.length() > 3) {
                     Result::baidu++;
                 } else {
                     if (config->debugMode == 1) {
-                        Debug::print("Parser::parse: trying to found " + std::string(YANDEX_PATTERN) + " in agent" + agentRes);
+                        Debug::print("Parser::parse: trying to find " + std::string(YANDEX_PATTERN) + " in agent" + agentRes);
                     }
                     std::string yandexRes = matchRegex(&(*logRegExpsCompiled).yandex, agentChars, config);
                     if (yandexRes.length() > 3) {
@@ -76,7 +76,7 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
     
     // Parse IP
     if (config->debugMode == 1) {
-        Debug::print("Parser::parse: trying to found ip");
+        Debug::print("Parser::parse: trying to find ip");
     }
     std::string ipRes = matchRegex(&(*logRegExpsCompiled).ip, logLineChars, config);
     if (ipRes.length() < 5) {
@@ -112,12 +112,12 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
         itUrl = Result::urlMap.find(urlMapKey);
         if (itUrl == Result::urlMap.end()) {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + urlMapKey + " is not in our reesult list, added");
+                Debug::print("Parser::parse: url " + urlMapKey + " is not in our result list, added");
             }
             Result::urlMap[urlMapKey] = 1;
         } else {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + urlMapKey + " is already in our reesult list, increment");
+                Debug::print("Parser::parse: url " + urlMapKey + " is already in our result list, increment");
             }
             itUrl->second++;
         }
@@ -141,12 +141,12 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
         itRef = Result::refsMap.find(refMapKey);
         if (itRef == Result::refsMap.end()) {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + refMapKey + " is not in our reesult list, added");
+                Debug::print("Parser::parse: url " + refMapKey + " is not in our result list, added");
             }
             Result::refsMap[refMapKey] = 1;
         } else {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + refMapKey + " is already in our reesult list, increment");
+                Debug::print("Parser::parse: url " + refMapKey + " is already in our result list, increment");
             }
             itRef->second++;
         }
@@ -170,12 +170,12 @@ bool Parser::parse(std::string logLine, LogRegexCompiled *logRegExpsCompiled) {
         itCode = Result::codesMap.find(codeMapKey);
         if (itCode == Result::codesMap.end()) {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + codeMapKey + " is not in our reesult list, added");
+                Debug::print("Parser::parse: url " + codeMapKey + " is not in our result list, added");
             }
             Result::codesMap[codeMapKey] = 1;
         } else {
             if (config->debugMode == 1) {
-                Debug::print("Parser::parse: url " + codeMapKey + " is already in our reesult list, increment");
+                Debug::print("Parser::parse: url " + codeMapKey + " is already in our result list, increment");
             }
             itCode->second++;
         }
